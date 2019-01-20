@@ -2,6 +2,7 @@ package md2tex
 
 import (
 	"bufio"
+	"fmt"
 	"io"
 	"regexp"
 	"strings"
@@ -20,6 +21,7 @@ func Convert(r io.Reader, w io.Writer, c Conf) error {
 line:
 	for s.Scan() {
 		l := s.Text()
+		fmt.Println(l)
 		// check blocks
 		for _, bl := range c.Blocks {
 			if strings.Trim(l, " ") == strings.Trim(bl.Start, " ") {
